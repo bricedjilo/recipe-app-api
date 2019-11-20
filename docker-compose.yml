@@ -10,3 +10,17 @@ services:
       - ./app:/app # maps app directory in the project to app directory in the docker image
     command: > 
       sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db        # Name of the service that runs our database
+      - DB_NAME=app       # Our Postgres DB
+      - DB_USER=postgres  # Username for our db
+      - DB_PASS=supersecretpassword # Password used by out db service
+    depends_on:
+      - db                # The db service. We could also add other dependencies
+
+  db: 
+    image: postgres:10-alpine
+    environment:
+      - POSTGRES_DB=app
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=supersecretpassword

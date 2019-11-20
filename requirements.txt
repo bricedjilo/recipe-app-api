@@ -1,3 +1,7 @@
 Django>=2.2.7,<2.3.0
 djangorestframework>=3.10.3,<3.11.0
+
+# Used by Django to communicate between Django and Postgres
+psycopg2>2.7.5,<2.8.0
+
 flake8>=3.7.9,<3.8.0
